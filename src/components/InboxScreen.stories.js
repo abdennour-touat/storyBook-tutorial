@@ -44,6 +44,19 @@ Error.parameters = {
     ],
   },
 };
+export const Error3 = Template.bind({});
+Error.parameters = {
+  msw: {
+    handlers: [
+      rest.get(
+        "https://jsonplaceholder.typicode.com/todos?userId=1",
+        (req, res, ctx) => {
+          return res(ctx.status(403));
+        }
+      ),
+    ],
+  },
+};
 
 Default.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
